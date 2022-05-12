@@ -94,14 +94,14 @@ $dbController = new DBController($connector);
                         foreach ($tCars as $car) {
                         ?>
                           <tr>
-                            <td><?php echo $car['maker_name'];?></td>
-                            <td><?php echo $car['car_name'];?></td>
-                            <td><?php echo $car['car_type'];?></td>
-                            <td><?php echo $car['frame_number'];?></td>
-                            <td><?php echo toWareki($car['first_entry_date']);?></td>
+                            <td><?php echo htmlspecialchars($car['maker_name']);?></td>
+                            <td><?php echo htmlspecialchars($car['car_name']);?></td>
+                            <td><?php echo htmlspecialchars($car['car_type']);?></td>
+                            <td><?php echo htmlspecialchars($car['frame_number']);?></td>
+                            <td><?php echo toWareki(htmlspecialchars($car['first_entry_date']));?></td>
                             <td><?php 
                             $mileageUnitCode = $dbController->getMCommonByTypeAndCode(2, $car['mileage_unit_cd']);
-                            echo formattedMileage($car['mileage'], $mileageUnitCode);?></td>
+                            echo formattedMileage(htmlspecialchars($car['mileage']), $mileageUnitCode);?></td>
                             <td><?php echo formattedOutColor($car['out_color_name']);?></td>
                             <td><?php 
                             $shiftCode = $dbController->getMCommonByTypeAndCode(7, $car['shift_cd']);
